@@ -20,9 +20,19 @@ namespace FlightSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        // Members
+        Model.Interface.ISettingsModel settingsModel = new Model.ApplicationSettingsModel();
+        FlightSimulator.ViewModels.Windows.SettingsWindowViewModel settingViewModelObject;
+        Views.Settings settings = new Views.Settings();
+
+
         public MainWindow()
         {
             InitializeComponent();
+            settingViewModelObject = 
+                new FlightSimulator.ViewModels.Windows.SettingsWindowViewModel(settingsModel);
+
         }
 
         private void FlightBoard_Loaded(object sender, RoutedEventArgs e)
@@ -42,14 +52,21 @@ namespace FlightSimulator
 
         private void SettingButton(object sender, RoutedEventArgs e)
         {
-            Views.settings settings = new Views.settings();
-            //settings.Show();
+            Model.Interface.ISettingsModel settingsModel = new Model.ApplicationSettingsModel();
+            FlightSimulator.ViewModels.Windows.SettingsWindowViewModel settingViewModelObject =
+               new FlightSimulator.ViewModels.Windows.SettingsWindowViewModel(settingsModel);
+            //settingViewModelObject.ReloadSettings();
+            //SettingControl.DataContext = settingViewModelObject;
 
         }
 
         private void ConnectButton(object sender, RoutedEventArgs e)
         {
             
+        }
+        private void SettingControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            SettingControl.DataContext = settingViewModelObject;
         }
 
 

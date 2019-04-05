@@ -6,20 +6,26 @@
         xmlns:local="clr-namespace:FlightSimulator"
         xmlns:Views="clr-namespace:FlightSimulator.Views" x:Class="FlightSimulator.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="950
-    ">
+        Title="MainWindow" Height="600" Width="950">
+    <Window.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="509*"/>
+            <ColumnDefinition Width="435*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-       
-        <TextBox FontSize="40" TextAlignment="Center" Margin="0,0,0.333,-0.333" Text="Flight Simulator" Foreground="Purple" IsReadOnly="True"/>
+
+        <TextBox FontSize="40" TextAlignment="Center" Margin="0,0,-0.666,-0.333" Text="Flight Simulator" Foreground="Purple" IsReadOnly="True" Grid.ColumnSpan="3"/>
         <Views:FlightBoard HorizontalAlignment="Left" Height="328" Margin="0,113,0,0" VerticalAlignment="Top" Width="396"/>
-        
+        <Views:Settings x:Name="SettingControl" Loaded="SettingControl_Loaded" Visibility="{Binding ElementName=settingButton, Path=IsChecked , Converter={StaticResource BooleanToVisibilityConverter}}" Grid.ColumnSpan="2" Margin="0,119,0.334,118.667" />
+
         <Button Content="Connect" HorizontalAlignment="Left" Margin="119,78,0,0" VerticalAlignment="Top" Width="75" Click="ConnectButton"/>
-        <Button Content="Setting" HorizontalAlignment="Left" Margin="218,78,0,0" VerticalAlignment="Top" Width="75" Click="SettingButton"/>
-        <TabControl HorizontalAlignment="Left" Height="508" Margin="419,62,0,0" VerticalAlignment="Top" Width="521" RenderTransformOrigin="0.5,0.5">
+        <ToggleButton x:Name="settingButton" Content="Setting" HorizontalAlignment="Left" Margin="218,78,0,0" VerticalAlignment="Top" Width="75"/>
+        <TabControl HorizontalAlignment="Left" Height="508" Margin="419,62,0,0" VerticalAlignment="Top" Width="521" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <TabControl.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -29,7 +35,7 @@
                 </TransformGroup>
             </TabControl.RenderTransform>
             <TabItem Header="Manual">
-                <Grid Margin="0,0,-82.667,-68.667">
+                <Grid Margin="0,0,-4.667,-5">
                     <Views:Joystick HorizontalAlignment="Left" Height="348" VerticalAlignment="Top" Width="358" Margin="58,31,0,0"/>
                     <TextBox HorizontalAlignment="Left" Height="34" Margin="370,186,0,0" Text="&lt;- elevator -&gt;" VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.538,0.436" FontSize="20" BorderThickness="0" FontWeight="Bold" IsReadOnly="True">
                         <TextBox.RenderTransform>
@@ -92,6 +98,7 @@
                         </TextBox.RenderTransform>
                     </TextBox>
                     <Label Content="1" HorizontalAlignment="Left" Margin="20,13,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" />
+
                 </Grid>
 
 
