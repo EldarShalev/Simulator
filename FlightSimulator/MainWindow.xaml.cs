@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,34 @@ namespace FlightSimulator
         {
             InitializeComponent();
         }
+
+        private void FlightBoard_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Joystick_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void SettingButton(object sender, RoutedEventArgs e)
+        {
+            Views.settings settings = new Views.settings();
+            //settings.Show();
+
+        }
+
+        private void ConnectButton(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+
     }
 }

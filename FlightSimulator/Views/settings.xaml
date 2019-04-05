@@ -1,0 +1,25 @@
+﻿<Window x:Class="FlightSimulator.Views.settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightSimulator.Views"
+        mc:Ignorable="d"
+        Title="settings" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="103*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Flight Server IP: " HorizontalAlignment="Left" Margin="30,58,0,0" VerticalAlignment="Top"/>
+        <Label Content="Flight Info Port: " HorizontalAlignment="Left" Margin="30,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="Flight Command Port: " HorizontalAlignment="Left" Margin="25,141,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="154,62,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="ServerIPTextBox" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="154,102,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="FlightInfoPortTextBox" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="153,145,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="FlightCommandPortTextBox" Grid.ColumnSpan="2"/>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="40,229,0,0" VerticalAlignment="Top" Width="75" Click="OKButton"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="164,229,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>

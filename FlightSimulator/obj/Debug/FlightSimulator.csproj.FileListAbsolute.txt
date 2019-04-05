@@ -50,3 +50,27 @@ C:\Users\Dor Nisim\Desktop\Teaching\Advanced Programming 2\Excrecises\Ex2\Flight
 C:\Users\Dor Nisim\Desktop\Teaching\Advanced Programming 2\Excrecises\Ex2\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.GenerateResource.cache
 C:\Users\Dor Nisim\Desktop\Teaching\Advanced Programming 2\Excrecises\Ex2\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.CoreCompileInputs.cache
 C:\Users\Dor Nisim\Desktop\Teaching\Advanced Programming 2\Excrecises\Ex2\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.CopyComplete
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\Views\Joystick.baml
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\MainWindow.g.cs
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\Views\FlightBoard.g.cs
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\Views\Joystick.g.cs
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\App.g.cs
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator_MarkupCompile.cache
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator_MarkupCompile.lref
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\bin\Debug\FlightSimulator.exe.config
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\bin\Debug\FlightSimulator.exe
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\bin\Debug\FlightSimulator.pdb
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\bin\Debug\DynamicDataDisplay.dll
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\bin\Debug\DynamicDataDisplay.xml
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\MainWindow.baml
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\Views\FlightBoard.baml
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.g.resources
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.Properties.Resources.resources
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.GenerateResource.cache
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.CoreCompileInputs.cache
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.CopyComplete
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.exe
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.pdb
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csprojAssemblyReference.cache
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\Views\settings.g.cs
