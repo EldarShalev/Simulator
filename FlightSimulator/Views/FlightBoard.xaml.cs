@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FlightSimulator.Model;
 using FlightSimulator.ViewModels;
+using FlightSimulator.Model.Interface;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 
@@ -26,10 +27,13 @@ namespace FlightSimulator.Views
     public partial class FlightBoard : UserControl
     {
         ObservableDataSource<Point> planeLocations = null;
+        int i = 0, j = 0;
+
         public FlightBoard()
         {
             InitializeComponent();
         }
+            
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -40,11 +44,15 @@ namespace FlightSimulator.Views
             plotter.AddLineGraph(planeLocations, 2, "Route");
         }
 
-        private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        public void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
-                Point p1 = new Point(0,0);            // Fill here!
+                double v_lon = (sender as FlightBoardViewModel).Lon;
+                double v_lat = (sender as FlightBoardViewModel).Lat;
+                i++;
+                j++;
+                Point p1 = new Point(v_lon, v_lat);            // Fill here!
                 planeLocations.AppendAsync(Dispatcher, p1);
             }
         }

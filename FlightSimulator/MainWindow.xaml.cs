@@ -12,6 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using FlightSimulator.ViewModels;
+using FlightSimulator.Model;
 
 namespace FlightSimulator
 {
@@ -21,24 +24,14 @@ namespace FlightSimulator
     public partial class MainWindow : Window
     {
 
-        // Members
-        Model.Interface.ISettingsModel settingsModel = new Model.ApplicationSettingsModel();
-        FlightSimulator.ViewModels.Windows.SettingsWindowViewModel settingViewModelObject;
-        Views.Settings settings = new Views.Settings();
-
-
+        FlightBoardViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            settingViewModelObject = 
-                new FlightSimulator.ViewModels.Windows.SettingsWindowViewModel(settingsModel);
+            
 
         }
 
-        private void FlightBoard_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Joystick_Loaded(object sender, RoutedEventArgs e)
         {
@@ -52,23 +45,30 @@ namespace FlightSimulator
 
         private void SettingButton(object sender, RoutedEventArgs e)
         {
-            Model.Interface.ISettingsModel settingsModel = new Model.ApplicationSettingsModel();
-            FlightSimulator.ViewModels.Windows.SettingsWindowViewModel settingViewModelObject =
-               new FlightSimulator.ViewModels.Windows.SettingsWindowViewModel(settingsModel);
-            //settingViewModelObject.ReloadSettings();
-            //SettingControl.DataContext = settingViewModelObject;
+
+            SettingControl.Visibility = Visibility.Visible;
 
         }
 
         private void ConnectButton(object sender, RoutedEventArgs e)
         {
-            
-        }
-        private void SettingControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            SettingControl.DataContext = settingViewModelObject;
+            viewModel = new FlightBoardViewModel(new InfoServer(), new CommandServer());
+            DataContext = viewModel;
+            //FlightBoard_Loaded_1(sender, e);
+            this.FlBoard.DataContext = viewModel;
+            viewModel.PropertyChanged += this.FlBoard.Vm_PropertyChanged;
         }
 
+        private void settingButton_Checked(object sender, RoutedEventArgs e)
+        {
+            SettingControl.Visibility = Visibility.Visible;
+
+        }
+
+        private void ClearButton(object sender, RoutedEventArgs e)
+        {
+            ClearTextBox.Clear();
+        }
 
     }
 }

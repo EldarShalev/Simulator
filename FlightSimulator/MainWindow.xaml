@@ -4,7 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
-        xmlns:Views="clr-namespace:FlightSimulator.Views" x:Class="FlightSimulator.MainWindow"
+        xmlns:Views="clr-namespace:FlightSimulator.Views"
+        xmlns:ViewModels="clr-namespace:FlightSimulator.ViewModels"
+        
+        xmlns:Windows="clr-namespace:FlightSimulator.ViewModels.Windows" x:Class="FlightSimulator.MainWindow"
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="950">
     <Window.Resources>
@@ -12,20 +16,27 @@
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         </ResourceDictionary>
     </Window.Resources>
+
     <Grid>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="509*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="479*"/>
             <ColumnDefinition Width="435*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox FontSize="40" TextAlignment="Center" Margin="0,0,-0.666,-0.333" Text="Flight Simulator" Foreground="Purple" IsReadOnly="True" Grid.ColumnSpan="3"/>
-        <Views:FlightBoard HorizontalAlignment="Left" Height="328" Margin="0,113,0,0" VerticalAlignment="Top" Width="396"/>
-        <Views:Settings x:Name="SettingControl" Loaded="SettingControl_Loaded" Visibility="{Binding ElementName=settingButton, Path=IsChecked , Converter={StaticResource BooleanToVisibilityConverter}}" Grid.ColumnSpan="2" Margin="0,119,0.334,118.667" />
+        <TextBox FontSize="40" TextAlignment="Center" Margin="0,0,-0.666,-0.333" Text="Flight Simulator" Foreground="Purple" IsReadOnly="True" Grid.ColumnSpan="4"/>
+        <Views:FlightBoard HorizontalAlignment="Left" Height="328" Margin="0,113,0,0" VerticalAlignment="Top" Width="396" Grid.ColumnSpan="2" x:Name="FlBoard">
+        </Views:FlightBoard>
+        <Views:Settings x:Name="SettingControl" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=settingButton}" Grid.ColumnSpan="3" Margin="0,119,0.334,118.667" />
 
-        <Button Content="Connect" HorizontalAlignment="Left" Margin="119,78,0,0" VerticalAlignment="Top" Width="75" Click="ConnectButton"/>
-        <ToggleButton x:Name="settingButton" Content="Setting" HorizontalAlignment="Left" Margin="218,78,0,0" VerticalAlignment="Top" Width="75"/>
-        <TabControl HorizontalAlignment="Left" Height="508" Margin="419,62,0,0" VerticalAlignment="Top" Width="521" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+        <Button  Content="Connect" Command="{Binding ConnectCommand}" HorizontalAlignment="Left" Margin="88.833,78,0,0" VerticalAlignment="Top" Width="75" Click="ConnectButton" Grid.Column="1">
+        
+
+        </Button>
+        <ToggleButton x:Name="settingButton" Content="Setting" HorizontalAlignment="Left" Margin="187.833,78,0,0" VerticalAlignment="Top" Width="75" Checked="settingButton_Checked" Grid.Column="1" />
+        <TabControl HorizontalAlignment="Left" Height="508" Margin="388.833,62,0,0" VerticalAlignment="Top" Width="521" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="1">
             <TabControl.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -36,7 +47,7 @@
             </TabControl.RenderTransform>
             <TabItem Header="Manual">
                 <Grid Margin="0,0,-4.667,-5">
-                    <Views:Joystick HorizontalAlignment="Left" Height="348" VerticalAlignment="Top" Width="358" Margin="58,31,0,0"/>
+                    <Views:Joystick x:Name="JoyStickView" HorizontalAlignment="Left" Height="348" VerticalAlignment="Top" Width="358" Margin="58,31,0,0"/>
                     <TextBox HorizontalAlignment="Left" Height="34" Margin="370,186,0,0" Text="&lt;- elevator -&gt;" VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.538,0.436" FontSize="20" BorderThickness="0" FontWeight="Bold" IsReadOnly="True">
                         <TextBox.RenderTransform>
                             <TransformGroup>
@@ -106,17 +117,16 @@
             </TabItem>
 
             <TabItem Header="Auto Pilot">
-
-
-                <Grid Margin="0,-2,2.333,2">
-                    <Button Content="OK" Width="75" Margin="125,423,313,25" FontWeight="Bold"/>
-                    <Button Content="Clear" Width="75" Height="32" Margin="263,423,175,25" FontWeight="Bold"/>
-                    <TextBox TextWrapping="Wrap" Text="" Margin="10,10,10,121"/>
-
+                <Grid Margin="0,-2,2.333,2" x:Name="ClearText">
+                    <Button Content="OK" Width="75" Margin="65,423,373,25" FontWeight="Bold"/>
+                    <Button Content="Clear" Width="75" Height="32" Margin="205,423,233,25" FontWeight="Bold" Click="ClearButton"/>
+                    <TextBox x:Name="ClearTextBox"  TextWrapping="Wrap"  AcceptsReturn="True" Text="{Binding Message, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Background}" Margin="10,10,136,97"/>
                 </Grid>
+
             </TabItem>
 
 
         </TabControl>
     </Grid>
+
 </Window>

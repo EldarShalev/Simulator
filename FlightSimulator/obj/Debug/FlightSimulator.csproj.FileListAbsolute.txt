@@ -3,6 +3,7 @@ C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\bin\Debug\FlightSimu
 C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\bin\Debug\FlightSimulator.pdb
 C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\bin\Debug\DynamicDataDisplay.dll
 C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\bin\Debug\DynamicDataDisplay.xml
+C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csprojAssemblyReference.cache
 C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\Views\Joystick.baml
 C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\Views\settings.baml
 C:\Users\Eldar\source\repos\FlightSimulator\FlightSimulator\obj\Debug\MainWindow.g.cs

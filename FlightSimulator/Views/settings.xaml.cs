@@ -20,71 +20,28 @@ namespace FlightSimulator.Views
     /// <summary>
     /// Interaction logic for settings.xaml
     /// </summary>
-    public partial class Settings : StackPanel, INotifyPropertyChanged
+    public partial class Settings : StackPanel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private string _IP_Text;
 
+        // Creating the model instance to give to viewModel constructor during run time (DI) 
         Model.Interface.ISettingsModel settingsModel = new Model.ApplicationSettingsModel();
-        //FlightSimulator.ViewModels.Windows.SettingsWindowViewModel settingViewModelObject;
+        
         public Settings()
         {
             InitializeComponent();
-            //settingViewModelObject =
-            //    new FlightSimulator.ViewModels.Windows.SettingsWindowViewModel(settingsModel);
-            //settingViewModelObject.ReloadSettings();
-            //this.DataContext = settingViewModelObject;
-            //this.IPText = this.settingsModel.FlightServerIP;
-            //this.IPText = "hello";
             this.DataContext = new FlightSimulator.ViewModels.Windows.SettingsWindowViewModel(settingsModel);
             
+        }
 
+        private void Button_Click_Cancel(object sender, RoutedEventArgs e)
+        {
+            Visibility = Visibility.Hidden;
 
         }
 
-        protected void OnPropertyChanged(string propertyName)
+        private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        public string IPText
-        {
-            get { return _IP_Text; }
-            set
-            {
-                if (value != _IP_Text)
-                {
-                    _IP_Text = value;
-                    OnPropertyChanged("IPText");
-                }
-            }
-        }
-        private void OKButton(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CancelButton(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        private void ServerIPTextBox(object sender, TextChangedEventArgs e)
-        {
-        }
-
-        private void FlightCommandPortTextBox(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void FlightInfoPortTextBox(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        public void LoadALL()
-        {
-
+            Visibility = Visibility.Hidden;
         }
     }
 }
