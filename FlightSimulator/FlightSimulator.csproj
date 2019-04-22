@@ -71,8 +71,8 @@
     <Compile Include="Model\InfoServer.cs" />
     <Compile Include="Model\Interface\IServer.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
+    <Compile Include="ViewModels\AutoPilotVM.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
-    <Compile Include="ViewModels\Windows\ConnectViewModel.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />
     <Compile Include="Views\FlightBoard.xaml.cs">

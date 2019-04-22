@@ -14,21 +14,29 @@ namespace FlightSimulator.ViewModels
 {
     public partial class FlightBoardViewModel : BaseNotify
     {
+        // Members
         IServer info;
         IServer command;
-        //Windows.ConnectViewModel conModel;
+        double throttle;
+        double rudder;
+        bool connectedCommand;
    
-
+        
+        /**
+         * Constructor with server and client
+         */
         public FlightBoardViewModel(IServer infoServer, IServer commandServer)
         {
             this.info = infoServer;
             this.command = commandServer;
+            connectedCommand = false;
             info.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
                 NotifyPropertyChanged(e.PropertyName);
                 
             };
         }
+
 
         #region ClickCommand
         private ICommand _connectCommand;
@@ -51,19 +59,12 @@ namespace FlightSimulator.ViewModels
             // Connect as a client to the simulator
             command.connect(IPAddress.Parse(Properties.Settings.Default.FlightServerIP),
                 Properties.Settings.Default.FlightCommandPort);
+            // Set connection as true
+            connectedCommand = true;
+            
 
         }
         #endregion
-
-
-
-
-
-
-
-
-
-
 
 
         public double Lon
@@ -72,10 +73,76 @@ namespace FlightSimulator.ViewModels
             
         }
 
-
         public double Lat
         {
             get { return ((InfoServer)info).Latitude; }
         }
+
+
+        // Setting throttle
+        public double Throttle
+        {
+            set
+            {
+                throttle = value;
+                string parsedThrottle = throttle.ToString();
+                command.write("set /controls/engines/current-engine/throttle " + parsedThrottle 
+                    +"\r\n");
+            }
+        }
+
+        // Setting Rudder
+        public double Rudder
+        {
+            set
+            {
+                rudder = value;
+                string parsedRudder = rudder.ToString();
+                command.write("set /controls/flight/rudder " + parsedRudder + "\r\n");
+            }
+        }
+
+        // For any command with autopilot TextBox
+        public string AnyCommand
+        {
+            set
+            {
+                command.write(value+ "\r\n");
+            }
+        }
+
+        // Setting Elevator
+        double elevator;
+        public double Elevator
+        {
+            set
+            {
+                elevator = value;
+                string parsedElevator = elevator.ToString();
+                if (connectedCommand)
+                    command.write("set /controls/flight/elevator " + parsedElevator + "\r\n");
+            }
+        }
+
+        // Settin aileron
+        double aileron;
+        public double Aileron
+        {
+            set
+            {
+                aileron = value;
+                string parsedAileron = aileron.ToString();
+                if (connectedCommand)
+                    command.write("set /controls/flight/aileron " + parsedAileron + "\r\n");
+            }
+        }
+
+
+
+
+
+
+
+
     }
 }

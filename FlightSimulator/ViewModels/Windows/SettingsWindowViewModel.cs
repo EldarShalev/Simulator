@@ -17,10 +17,7 @@ namespace FlightSimulator.ViewModels.Windows
         public SettingsWindowViewModel(ISettingsModel model)
         {
             this.model = model;
-            // model.PropertyChanged+= delegate(Object sender, PropertychangedEventArgs e){
-            // NotifyPropertyChanged("vm + e.PropertyName);
-            //
-            //
+
         }
 
         public string FlightServerIP

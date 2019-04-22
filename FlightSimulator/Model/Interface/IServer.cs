@@ -13,6 +13,7 @@ namespace FlightSimulator.Model.Interface
     {
         event PropertyChangedEventHandler PropertyChanged;
 
+        // For client and server purpose
         void connect(IPAddress ip, int port);
         void disconnect();
         string read();

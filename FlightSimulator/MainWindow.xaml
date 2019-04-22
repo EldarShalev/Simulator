@@ -32,7 +32,7 @@
         <Views:Settings x:Name="SettingControl" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=settingButton}" Grid.ColumnSpan="3" Margin="0,119,0.334,118.667" />
 
         <Button  Content="Connect" Command="{Binding ConnectCommand}" HorizontalAlignment="Left" Margin="88.833,78,0,0" VerticalAlignment="Top" Width="75" Click="ConnectButton" Grid.Column="1">
-        
+
 
         </Button>
         <ToggleButton x:Name="settingButton" Content="Setting" HorizontalAlignment="Left" Margin="187.833,78,0,0" VerticalAlignment="Top" Width="75" Checked="settingButton_Checked" Grid.Column="1" />
@@ -47,7 +47,7 @@
             </TabControl.RenderTransform>
             <TabItem Header="Manual">
                 <Grid Margin="0,0,-4.667,-5">
-                    <Views:Joystick x:Name="JoyStickView" HorizontalAlignment="Left" Height="348" VerticalAlignment="Top" Width="358" Margin="58,31,0,0"/>
+                    <Views:Joystick Elevator="{Binding Elevator, Mode=OneWayToSource}" Aileron="{Binding Aileron, Mode=OneWayToSource}" x:Name="JoyStickView" HorizontalAlignment="Left" Height="348" VerticalAlignment="Top" Width="358" Margin="58,31,0,0"/>
                     <TextBox HorizontalAlignment="Left" Height="34" Margin="370,186,0,0" Text="&lt;- elevator -&gt;" VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.538,0.436" FontSize="20" BorderThickness="0" FontWeight="Bold" IsReadOnly="True">
                         <TextBox.RenderTransform>
                             <TransformGroup>
@@ -68,12 +68,12 @@
                             </TransformGroup>
                         </TextBox.RenderTransform>
                     </TextBox>
-                    <Slider HorizontalAlignment="Left" Margin="91,323,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="87" Width="281" Value="0" Maximum="1" Minimum="-1">
+                    <Slider Value="{Binding Path=Rudder}" x:Name="rudderSlider" HorizontalAlignment="Left" Margin="91,395,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="87" Width="281"  Maximum="1" Minimum="-1">
                         <Slider.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
-                                <RotateTransform Angle="180"/>
+                                <RotateTransform Angle="360"/>
                                 <TranslateTransform/>
                             </TransformGroup>
                         </Slider.RenderTransform>
@@ -88,12 +88,12 @@
                             </TransformGroup>
                         </TextBox.RenderTransform>
                     </TextBox>
-                    <Slider HorizontalAlignment="Left" Margin="-129,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="87" Width="281" Value="0" Maximum="1" Minimum="-1">
+                    <Slider Value="{Binding Path=Throttle}" x:Name="throttleSlider" HorizontalAlignment="Left" Margin="-65,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="87" Width="281"  Maximum="1" Minimum="-1">
                         <Slider.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
-                                <RotateTransform Angle="90"/>
+                                <RotateTransform Angle="270"/>
                                 <TranslateTransform/>
                             </TransformGroup>
                         </Slider.RenderTransform>
@@ -118,9 +118,15 @@
 
             <TabItem Header="Auto Pilot">
                 <Grid Margin="0,-2,2.333,2" x:Name="ClearText">
-                    <Button Content="OK" Width="75" Margin="65,423,373,25" FontWeight="Bold"/>
-                    <Button Content="Clear" Width="75" Height="32" Margin="205,423,233,25" FontWeight="Bold" Click="ClearButton"/>
-                    <TextBox x:Name="ClearTextBox"  TextWrapping="Wrap"  AcceptsReturn="True" Text="{Binding Message, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Background}" Margin="10,10,136,97"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="482*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button  x:Name="OKCommands"  Command="{Binding SendCommands}" Content="OK" Width="75" Margin="33.667,423,373.333,25" FontWeight="Bold" Click="OKSendCommand" Grid.Column="3"/>
+                    <Button Content="Clear" Width="75" Height="32" Margin="173.667,423,233.333,25" FontWeight="Bold" Click="ClearButton" Grid.Column="3"/>
+                    <TextBox x:Name="TextBoxCommands"  TextWrapping="Wrap"  AcceptsReturn="True" Text="{Binding Message, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Background}" Margin="8.592,10,135.333,97" TextChanged="ClearTextBox_TextChanged" Grid.ColumnSpan="3" Grid.Column="1"/>
                 </Grid>
 
             </TabItem>

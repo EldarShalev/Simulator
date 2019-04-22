@@ -51,7 +51,6 @@ namespace FlightSimulator.Model
         public void NotifyPropertyChanged(string propName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-            //this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
 
@@ -84,6 +83,7 @@ namespace FlightSimulator.Model
                 // to connect to Server 
                 listener.Listen(10);
 
+                // listen always on new thread
                 Thread t1 = new Thread(delegate ()
                 {
                     Console.WriteLine("Waiting connection ... ");
@@ -117,7 +117,8 @@ namespace FlightSimulator.Model
 
             /** This is all the possibilities to read and parse the bytes read from the server
              *  including edge cases for reading not sequentially (too much bytes)
-             * 
+             *  This is to parse the Lon and the Lat parameters which are the first and second
+             *  to be read.
              * **/
             char delimiter = ',';
             int counter = 0;
@@ -187,39 +188,25 @@ namespace FlightSimulator.Model
                 longitudeOpt1 = longitudeOpt2;
             if (latitudeOpt1 == "")
                 latitudeOpt1 = latitudeOpt2;
-            //int mapWidth = 500;
-            //int mapHeight = 400;
-            //float final_long = (float.Parse(longitude) + 180) * (mapWidth / 360);
-            // convert from degrees to radians
-            //float latRad = (float.Parse(latitude)) * (float)(Math.PI / 180);
 
-            // get y value
-            //float mercN = (float)Math.Log10(Math.Tan((Math.PI / 4) + (latRad / 2)));
-            //float final_lat = (float)(mapHeight / 2) - (float)(mapWidth * mercN / (2 * Math.PI));
-
+            // Changing the objects will call to set property 
             Longitude = float.Parse(longitudeOpt1);
-            Latitude = float.Parse(latitudeOpt1);
-
-            counter1++;
-            //Longitude = counter1;
-            //Latitude = counter1;
+            Latitude = float.Parse(latitudeOpt1);              
         }
 
-
-
-
-
-
+        // Not mandatory to implement.
         public void disconnect()
         {
             stop = true;
         }
 
+        // No need to read from server for now, only lon and lat that call set property.
         public string read()
         {
             throw new NotImplementedException();
         }
 
+        // No need to write to server, only get info from it.
         public void write(string line)
         {
             throw new NotImplementedException();

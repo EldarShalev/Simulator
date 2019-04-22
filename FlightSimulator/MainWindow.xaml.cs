@@ -23,24 +23,12 @@ namespace FlightSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        // Member
         FlightBoardViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
             
-
-        }
-
-
-        private void Joystick_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void SettingButton(object sender, RoutedEventArgs e)
@@ -50,12 +38,18 @@ namespace FlightSimulator
 
         }
 
+        /** The connect button set the data context of our crtical elements to be the new view
+         model the was created. (Data context also can be in xaml but here is much more clear
+          what are the crucial elements).
+        */
         private void ConnectButton(object sender, RoutedEventArgs e)
         {
             viewModel = new FlightBoardViewModel(new InfoServer(), new CommandServer());
             DataContext = viewModel;
-            //FlightBoard_Loaded_1(sender, e);
             this.FlBoard.DataContext = viewModel;
+            this.throttleSlider.DataContext = viewModel;
+            this.rudderSlider.DataContext = viewModel;
+            this.JoyStickView.DataContext = viewModel;
             viewModel.PropertyChanged += this.FlBoard.Vm_PropertyChanged;
         }
 
@@ -67,8 +61,22 @@ namespace FlightSimulator
 
         private void ClearButton(object sender, RoutedEventArgs e)
         {
-            ClearTextBox.Clear();
+            TextBoxCommands.Clear();
+            this.TextBoxCommands.Background = new SolidColorBrush(Colors.White);
         }
 
+
+        private void ClearTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.TextBoxCommands.Background = new SolidColorBrush(Colors.LightPink);
+        }
+
+        // Binding VM for autopilot
+        private void OKSendCommand(object sender, RoutedEventArgs e)
+        {    
+            this.OKCommands.DataContext = new AutoPilotVM(viewModel, this.TextBoxCommands);
+            this.TextBoxCommands.Background = new SolidColorBrush(Colors.White);
+
+        }
     }
 }
