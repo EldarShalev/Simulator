@@ -1,0 +1,41 @@
+commit 35908626070cf112001bcd75ba2c21a9e7b5ae2a
+Author: Eldar Shalev <eldarshalev1@gmail.com>
+Date:   Mon Apr 22 16:52:15 2019 +0300
+
+    Binding all views to their VM, fixed command send
+
+commit dad83c0b5e54bba6d80c01684635793be7b83b68
+Author: Eldar Shalev <eldarshalev1@gmail.com>
+Date:   Sun Apr 21 23:17:29 2019 +0300
+
+    files, client server, flightboard
+
+commit c52c6104292238dde426e0099ac1c8497b425cb9
+Author: Eldar Shalev <eldarshalev1@gmail.com>
+Date:   Sun Apr 21 23:14:56 2019 +0300
+
+    server, client, flightboard
+
+commit 076ccaca2d5df35338a2b420845d5d1303d4d1d7
+Author: Eldar Shalev <eldarshalev1@gmail.com>
+Date:   Fri Apr 5 17:46:30 2019 +0300
+
+    First Binding
+
+commit f96178b1a6d780d76cecc58cf92923c521a20f7d
+Author: Eldar Shalev <eldarshalev1@gmail.com>
+Date:   Fri Apr 5 12:33:55 2019 +0300
+
+    setting.xaml
+
+commit ea74f2813cbba026195aba47415d0b2ec9e6738b
+Author: Eldar Shalev <eldarshalev1@gmail.com>
+Date:   Thu Apr 4 15:41:15 2019 +0300
+
+    First files
+
+commit 108e5ba822b1646ec0c9748f7c0f3265f02e751f
+Author: Eldar Shalev <eldarshalev1@gmail.com>
+Date:   Thu Apr 4 15:21:01 2019 +0300
+
+    First Commit

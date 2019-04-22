@@ -20,7 +20,6 @@ namespace FlightSimulator.Model
         float m_longitude;
         float m_latitude;
         volatile Boolean stop;
-        int counter1 = 0;
 
 
         // Ctor
@@ -97,11 +96,12 @@ namespace FlightSimulator.Model
                         // Data buffer 
                         byte[] bytes = new Byte[1024];
                         string data = null;
-
                         int numByte = clientSocket.Receive(bytes);
                         data = ASCIIEncoding.ASCII.GetString(bytes,0, numByte);
-                        ParseTheData(data);
-                        //Thread.Sleep(250);
+                        if (data != null)
+                        {
+                            ParseTheData(data);
+                        }
                     }
                 });
                 t1.Start();
